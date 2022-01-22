@@ -1,0 +1,33 @@
+{% extends "basic_app/dashboard.html" %}
+ {% block body_block %}
+
+
+    <br>
+    <h1 class="text-white fw-bold">Customers</h1>
+    <a class="btn btn-dark" href="{% url 'basic_app:add_customer' %}" role="button">Add</a>
+
+    <div class="mt-4 p-5 bg-light  text-white rounded">
+      {% if customer_data %}
+      <table class="table">
+        <thead class="thead-dark">
+          <th scope="col">Customer Id</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Customer Number</th>
+          <th scope="col">Customer address</th>
+        </thead>
+        {% for customer in customer_data %}
+          <tr>
+            <td>{{ customer.customer_id }}</td>
+            <td>{{ customer.customer_name }}</td>
+            <td>{{ customer.customer_number }}</td>
+            <td>{{ customer.customer_address }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+      {% else %}
+      <p>NO ACCESS RECORDS FOUND</p>
+      {% endif %}
+
+    </div>
+
+    {% endblock %}

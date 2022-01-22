@@ -1,0 +1,17 @@
+{% extends "basic_app/base.html" %}
+ {% block body_block %}
+
+  <div class="jumbotron">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="text-white fw-bold">Welcome to Agri Management System</h1>
+    {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="{% url 'basic_app:dashboard' %}" role="button">Go to Dashboard</a>
+    {% endif %}
+
+  </div>
+    {% endblock %}

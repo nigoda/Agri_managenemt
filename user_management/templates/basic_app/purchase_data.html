@@ -1,0 +1,34 @@
+{% extends "basic_app/dashboard.html" %}
+ {% block body_block %}
+
+
+    <br>
+    <h1 class="text-white fw-bold">Purchases</h1>
+    <a class="btn btn-dark" href="{% url 'basic_app:add_purchase' %}" role="button">Add</a>
+
+    <div class="mt-4 p-5 bg-light  text-white rounded">
+      {% if purchase_data %}
+      <table class="table">
+        <thead class="thead-dark">
+          <th scope="col">Customer Id</th>
+          <th scope="col">Product Id</th>
+          <th scope="col">Purchase Date</th>
+          <th scope="col">purchase Qty</th>
+        </thead>
+        {% for purchase in purchase_data %}
+          <tr>
+            <td>{{ purchase.customer_id  }}</td>
+            <td>{{ purchase.product_id }}</td>
+            <td>{{ purchase.purchase_date }}</td>
+            <td>{{ purchase.purchase_qty }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+      {% else %}
+      <p>NO ACCESS RECORDS FOUND</p>
+      {% endif %}
+
+    </div>
+
+
+    {% endblock %}

@@ -1,0 +1,33 @@
+{% extends "basic_app/dashboard.html" %}
+ {% block body_block %}
+
+
+    <br>
+    <h1 class="text-white fw-bold">Products</h1>
+    <a class="btn btn-dark" href="{% url 'basic_app:add_product' %}" role="button">Add</a>
+
+    <div class="mt-4 p-5 bg-light  text-white rounded">
+      {% if product_data %}
+      <table class="table">
+        <thead class="thead-dark">
+          <th scope="col">Product Id</th>
+          <th scope="col">Product Type</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Rate</th>
+        </thead>
+        {% for product in product_data %}
+          <tr>
+            <td>{{ product.product_id }}</td>
+            <td>{{ product.product_type }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.product_rate }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+      {% else %}
+      <p>NO ACCESS RECORDS FOUND</p>
+      {% endif %}
+
+    </div>
+
+    {% endblock %}
